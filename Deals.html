@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Deals</title>
+    <link rel="stylesheet" href="Deals.css">
+</head>
+<body>
+
+<header>
+    <h1>Combo PC Hardware</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="Deals.html">Deals</a>
+    <a href="Categories.html">Categories</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="Cart.html">Cart (<span class="cart-badge" id="cart-count">0</span>)</a>
+</nav>
+
+<section class="deals-banner">
+    <h2>Exclusive Deals - Limited Time Only!</h2>
+    <p>Don't miss out on our special offers. Grab your favorite hardware now!</p>
+</section>
+
+<section class="deals-title">
+    <h2>Today's Best Deals</h2>
+</section>
+
+<section class="products-grid">
+    <div class="product-card" data-name="Intel Core i9 Processor" data-price="399.99">
+        <div class="discount-tag">20% OFF</div>
+        <img src="Pic1.png" alt="CPU">
+        <h3>Intel Core i9 Processor</h3>
+        <p>High-performance CPU for gaming and multitasking</p>
+        <div class="price">$499.99</div>
+        <div class="discounted-price">$399.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-name="NVIDIA RTX 3080" data-price="599.99">
+        <div class="discount-tag">25% OFF</div>
+        <img src="Gr2.png" alt="GPU">
+        <h3>NVIDIA RTX 3080</h3>
+        <p>Ultimate graphics card for high-end gaming</p>
+        <div class="price">$799.99</div>
+        <div class="discounted-price">$599.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-name="Corsair Vengeance 16GB DDR4" data-price="55.99">
+        <div class="discount-tag">30% OFF</div>
+        <img src="Me4.png" alt="RAM">
+        <h3>Corsair Vengeance 16GB DDR4</h3>
+        <p>Fast memory for smooth performance</p>
+        <div class="price">$79.99</div>
+        <div class="discounted-price">$55.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+    <div class="product-card" data-name="Samsung 1TB NVMe SSD" data-price="119.99">
+        <div class="discount-tag">15% OFF</div>
+        <img src="ssd.png" alt="SSD">
+        <h3>Samsung 1TB NVMe SSD</h3>
+        <p>High-speed storage for faster boot times</p>
+        <div class="price">$139.99</div>
+        <div class="discounted-price">$119.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Combo PC Hardware. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // JavaScript for handling Add to Cart functionality
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartCount() {
+        document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    function addToCart(event) {
+        const productElement = event.target.closest('.product-card');
+        const productName = productElement.getAttribute('data-name');
+        const productPrice = parseFloat(productElement.getAttribute('data-price'));
+
+        // Add product to cart
+        cart.push({
+            name: productName,
+            price: productPrice
+        });
+
+        // Save cart to local storage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update the cart count
+        updateCartCount();
+
+        alert(productName + ' added to cart!');
+    }
+
+    // Add event listeners to all "Add to Cart" buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', addToCart);
+    });
+
+    // Update cart count on page load
+    updateCartCount();
+</script>
+
+</body>
+</html>

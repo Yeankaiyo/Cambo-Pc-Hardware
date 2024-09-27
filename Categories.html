@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PC Hardware Hub - Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .shop-title {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .shop-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .categories {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .category {
+            margin: 0 15px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            width: 150px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .category:hover {
+            background-color: #0073e6;
+            color: white;
+        }
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product-card {
+            background-color: white;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .product-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .product-card p {
+            font-size: 16px;
+            color: #666;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0073e6;
+            margin-bottom: 10px;
+        }
+        .add-to-cart {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Combo PC Hardware</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="Deals.html">Deals</a>
+    <a href="Categories.html">Categories</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="cart.html">Cart (<span class="cart-badge" id="cart-count">0</span>)</a>
+</nav>
+
+<section class="shop-title">
+    <h2>Shop by Category</h2>
+    <p>Select a category to explore products</p>
+</section>
+
+<section class="categories">
+    <div class="category" onclick="showCategory('cpu')">CPUs</div>
+    <div class="category" onclick="showCategory('gpu')">GPUs</div>
+    <div class="category" onclick="showCategory('ram')">RAM</div>
+    <div class="category" onclick="showCategory('motherboard')">Motherboards</div>
+</section>
+
+<section id="cpu" class="products-grid" style="display: none;">
+    <div class="product-card">
+        <img src="Pic1.png" alt="Intel Core i9 Processor">
+        <h3>Intel Core i9 Processor</h3>
+        <p>High-performance CPU for gaming and multitasking</p>
+        <div class="price">$499.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('Intel Core i9 Processor', 499.99)">Add to Cart</a>
+    </div>
+    <!-- Add more CPU products as needed -->
+    <div class="product-card">
+        <img src="Pic2.png" alt="Apple M2 Ultra Processor">
+        <h3>Apple M2 Ultra Processor</h3>
+        <p>High-performance CPU for gaming and multitasking</p>
+        <div class="price">$3,999</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('Apple M2 Ultra Processor', 3,999)">Add to Cart</a>
+    </div>
+</section>
+
+<section id="gpu" class="products-grid" style="display: none;">
+    <div class="product-card">
+        <img src="Gr1.png" alt="Intel Arc A770">
+        <h3>Intel Arc A770</h3>
+        <p>Powerful graphics card for gaming.</p>
+        <div class="price">$259.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('Intel Arc A770', 259.99)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Gr3.png" alt="AMD Radeon RX 7900 XTX">
+        <h3>AMD Radeon RX 7900 XTX</h3>
+        <p>Top-tier graphics card for enthusiasts.</p>
+        <div class="price">$689.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('AMD Radeon RX 7900 XTX', 689.99)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Gr2.png" alt="NVIDIA GeForce RTX 3080">
+        <h3>NVIDIA GeForce RTX 3080</h3>
+        <p>High-performance GPU for gaming and rendering.</p>
+        <div class="price">$699.00</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('NVIDIA GeForce RTX 3080', 699.00)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Gr4.png" alt="Corsair Vengeance RAM 16GB">
+        <h3>Corsair Vengeance RAM 16GB</h3>
+        <p>Reliable RAM for smooth multitasking.</p>
+        <div class="price">$229.00</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('Corsair Vengeance RAM 16GB', 229.00)">Add to Cart</a>
+    </div>
+</section>
+
+<section id="ram" class="products-grid" style="display: none;">
+    <div class="product-card">
+        <img src="Me1.png" alt="Corsair Dominator Platinum RGB 32GB">
+        <h3>Corsair Dominator Platinum RGB 32GB</h3>
+        <p>Fast memory for smooth performance</p>
+        <div class="price">$155.00</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('Corsair Dominator Platinum RGB 32GB', 155.00)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Me2.png" alt="TeamGroup T-Force Delta RGB 32GB">
+        <h3>TeamGroup T-Force Delta RGB 32GB</h3>
+        <p>High-performance RAM for gaming.</p>
+        <div class="price">$699.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('TeamGroup T-Force Delta RGB 32GB', 699.99)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Me3.png" alt="GeIL EVO POTENZA 16GB">
+        <h3>GeIL EVO POTENZA 16GB</h3>
+        <p>Affordable and efficient RAM.</p>
+        <div class="price">$70.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('GeIL EVO POTENZA 16GB', 70.99)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Me4.png" alt="Corsair Vengeance RAM 16GB">
+        <h3>Corsair Vengeance RAM 16GB</h3>
+        <p>Quality RAM for gaming builds.</p>
+        <div class="price">$89.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('Corsair Vengeance RAM 16GB', 89.99)">Add to Cart</a>
+    </div>
+</section>
+
+<section id="motherboard" class="products-grid" style="display: none;">
+    <div class="product-card">
+        <img src="Mo1.png" alt="ASUS ROG Strix Z490-E">
+        <h3>ASUS ROG Strix Z490-E</h3>
+        <p>High-performance motherboard for Intel CPUs.</p>
+        <div class="price">$279.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('ASUS ROG Strix Z490-E', 279.99)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Mo2.png" alt="MSI B450 TOMAHAWK MAX">
+        <h3>MSI B450 TOMAHAWK MAX</h3>
+        <p>Great motherboard for AMD CPUs.</p>
+        <div class="price">$114.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('MSI B450 TOMAHAWK MAX', 114.99)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Mo3.png" alt="Gigabyte AORUS X570 Master">
+        <h3>Gigabyte AORUS X570 Master</h3>
+        <p>Premium motherboard with excellent features.</p>
+        <div class="price">$349.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('Gigabyte AORUS X570 Master', 349.99)">Add to Cart</a>
+    </div>
+    <div class="product-card">
+        <img src="Mo4.png" alt="ASUS ROG Strix Z790-E Gaming WiFi">
+        <h3>ASUS ROG Strix Z790-E Gaming WiFi</h3>
+        <p>High-performance motherboard for Intel CPUs.</p>
+        <div class="price">$359.99</div>
+        <a href="#" class="add-to-cart" onclick="addToCart('ASUS ROG Strix Z790-E Gaming WiFi', 359.99)">Add to Cart</a>
+    </div>
+</section>
+
+<script>
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(name, price) {
+        const product = { name, price };
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart-count').textContent = cart.length; // Update cart count in nav
+        alert(`${name} has been added to your cart!`); // Optional alert for feedback
+    }
+
+    function showCategory(category) {
+        const sections = document.querySelectorAll('.products-grid');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(category).style.display = 'flex';
+    }
+
+    // Initialize cart count on page load
+    document.getElementById('cart-count').textContent = cart.length; 
+</script>
+
+<footer>
+    <p>&copy; 2024 Combo PC Hardware. All rights reserved.</p>
+</footer>
+</body>
+</html>

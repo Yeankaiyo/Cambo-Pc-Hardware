@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PC Hardware Hub - Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .cart-container {
+            padding: 20px;
+            text-align: center;
+        }
+        .cart-item {
+            background-color: white;
+            margin: 15px auto;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-item h3 {
+            margin: 0;
+        }
+        .total-price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 0;
+        }
+        .remove-item {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Combo PC Hardware</h1>
+</header>
+
+<nav>
+    <a href="Home.html">Home</a>
+    <a href="Deals.html">Deals</a>
+    <a href="Categories.html">Categories</a>
+    <a href="Contact.html">Contact Us</a>
+    <a href="cart.html">Cart (<span class="cart-badge" id="cart-count">0</span>)</a>
+</nav>
+
+<section class="cart-container">
+    <h2>Your Shopping Cart</h2>
+    <div id="cart-items"></div>
+    <div class="total-price" id="total-price">Total: $0.00</div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Combo PC Hardware. All Rights Reserved.</p>
+</footer>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function displayCartItems() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalPriceElement = document.getElementById('total-price');
+        cartItemsContainer.innerHTML = '';
+        let totalPrice = 0;
+
+        cart.forEach((item, index) => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <h3>${item.name}</h3>
+                <span>$${item.price.toFixed(2)}</span>
+                <button class="remove-item" data-index="${index}">Remove</button>
+            `;
+            cartItemsContainer.appendChild(cartItem);
+            totalPrice += item.price;
+        });
+
+        totalPriceElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+        document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    // Function to remove an item from the cart
+    function removeItem(event) {
+        const index = event.target.getAttribute('data-index');
+        cart.splice(index, 1); // Remove item from cart
+        localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+        displayCartItems(); // Refresh display
+    }
+
+    // Event listener for all "Remove" buttons
+    document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('remove-item')) {
+            removeItem(event);
+        }
+    });
+
+    // Display cart items on page load
+    displayCartItems();
+</script>
+
+</body>
+</html>
